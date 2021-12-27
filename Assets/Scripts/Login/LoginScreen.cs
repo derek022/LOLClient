@@ -21,6 +21,10 @@ public class LoginScreen : MonoBehaviour
     private void Start()
     {
         registerPanel.SetActive(false);
+
+        NetIO nio = NetIO.Instance;
+
+
     }
 
     public void OnLoginClick()
