@@ -1,7 +1,9 @@
+using GameProtocol.dto;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using GameProtocol;
 
 public class LoginScreen : MonoBehaviour
 {
@@ -43,7 +45,16 @@ public class LoginScreen : MonoBehaviour
             return;
         }
 
+        AccountInfoDTO dto = new AccountInfoDTO();
+        dto.account = accountInput.text;
+        dto.password = pwdInput.text;
+
+        NetIO.Instance.write(Protocol.TYPE_LOGIN, 0, LoginProtocol.LOGIN_CREQ, dto);
+
+
+
         loginBtn.enabled = false;
+
 
     }
 
@@ -76,7 +87,8 @@ public class LoginScreen : MonoBehaviour
             return;
         }
 
-        WarmingManager.errors.Add(new WarningModel("×¢²áÊ§°Ü",null));
+        
+        //WarmingManager.errors.Add(new WarningModel("×¢²áÊ§°Ü",null));
 
     }
 

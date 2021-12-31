@@ -23,4 +23,15 @@ public class WarmingWindow : MonoBehaviour
         gameObject.SetActive(false);
         this.result?.Invoke();
     }
+
+    public void close()
+    {
+        gameObject.SetActive(false);
+        if(result!=null)
+        {
+
+        }
+
+
+    }
 }

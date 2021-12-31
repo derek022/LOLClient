@@ -28,7 +28,7 @@ public class NetIO
 
     private Socket client;
     private string ip = "127.0.0.1";
-    private int port = 55509;
+    private int port = 55590;
 
     private byte[] readBuff = new byte[1024];
 
