@@ -49,7 +49,7 @@ public class LoginScreen : MonoBehaviour
         dto.account = accountInput.text;
         dto.password = pwdInput.text;
 
-        NetIO.Instance.write(Protocol.TYPE_LOGIN, 0, LoginProtocol.LOGIN_CREQ, dto);
+        this.Write(Protocol.TYPE_LOGIN, 0, LoginProtocol.LOGIN_CREQ, dto);
 
 
 
@@ -87,9 +87,23 @@ public class LoginScreen : MonoBehaviour
             return;
         }
 
-        
-        //WarmingManager.errors.Add(new WarningModel("×¢²áÊ§°Ü",null));
+        AccountInfoDTO dto = new AccountInfoDTO();
+        dto.account = registerAccount.text;
+        dto.password = regPwd.text;
 
+        this.Write(Protocol.TYPE_LOGIN, 0, LoginProtocol.REG_CREQ, dto);
+
+        //WarmingManager.errors.Add(new WarningModel("×¢²áÊ§°Ü",null));
+        OnCloseRegisterClick();
+    }
+
+
+    public void openLoginBtn()
+    {
+        accountInput.text = string.Empty;
+        pwdInput.text = string.Empty;
+
+        loginBtn.enabled = true;
     }
 
     public void OnShowRegisterClick()
@@ -99,6 +113,10 @@ public class LoginScreen : MonoBehaviour
 
     public void OnCloseRegisterClick()
     {
+        registerAccount.text = string.Empty;
+        regPwd.text = string.Empty;
+        regConfirPwd.text = string.Empty;
+
         registerPanel.SetActive(false);
     }
 

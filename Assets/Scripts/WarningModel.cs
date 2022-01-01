@@ -9,6 +9,11 @@ public class WarningModel
     public WarningResult result;
     public string value;
 
+
+    public WarningModel(string value):this(value,null)
+    {
+    }
+
     public WarningModel(string value,WarningResult result)
     {
         this.result = result;

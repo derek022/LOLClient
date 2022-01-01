@@ -35,8 +35,10 @@ public class NetIO
     List<byte> cache = new List<byte>();
     private bool isReading = false;
 
-
-    List<SocketModel> messages = new List<SocketModel>();
+    /// <summary>
+    /// ПыПўМе
+    /// </summary>
+    public List<SocketModel> messages = new List<SocketModel>();
 
     private NetIO()
     {
