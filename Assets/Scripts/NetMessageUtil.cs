@@ -10,11 +10,13 @@ using GameProtocol;
 public class NetMessageUtil : MonoBehaviour,IHandler
 {
 
-    private LoginHandler loginHandler;
+    private IHandler loginHandler;
+    private IHandler userHandler;
 
     void Start()
     {
         loginHandler = GetComponent<LoginHandler>();
+        userHandler = GetComponent<UserHandler>();
     }
 
     // Update is called once per frame
@@ -37,6 +39,10 @@ public class NetMessageUtil : MonoBehaviour,IHandler
         {
             case Protocol.TYPE_LOGIN:
                 loginHandler.MessageReceive(model);
+                break;
+
+            case Protocol.TYPE_USER:
+                userHandler.MessageReceive(model);
                 break;
         }
     }

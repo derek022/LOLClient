@@ -16,7 +16,7 @@ public static class MonoBehaviourEx
     /// <param name="area"></param>
     /// <param name="command"></param>
     /// <param name="message"></param>
-    public static void Write(this MonoBehaviour mono, byte type, int area, int command, object message)
+    public static void WriteMessage(this MonoBehaviour mono, byte type, int area, int command, object message)
     {
         NetIO.Instance.write(type, area, command, message);
     }

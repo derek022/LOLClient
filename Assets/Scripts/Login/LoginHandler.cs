@@ -8,7 +8,7 @@ public class LoginHandler : MonoBehaviour,IHandler
 {
     public void MessageReceive(SocketModel model)
     {
-        WarmingManager.errors.Add(new WarningModel(model.message.ToString()));
+        
         switch(model.command)
         {
             case LoginProtocol.LOGIN_SRES:
@@ -35,6 +35,7 @@ public class LoginHandler : MonoBehaviour,IHandler
             case 0:
                 // 加载游戏主场景
                 SceneManager.LoadScene(1);
+                
                 break;
 
             case -1:

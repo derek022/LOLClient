@@ -41,7 +41,6 @@ public class LoginScreen : MonoBehaviour
 
         if ( pwdInput.text.Length < 6)
         {
-            Debug.Log("ÃÜÂë²»ºÏ·¨");
             return;
         }
 
@@ -49,7 +48,7 @@ public class LoginScreen : MonoBehaviour
         dto.account = accountInput.text;
         dto.password = pwdInput.text;
 
-        this.Write(Protocol.TYPE_LOGIN, 0, LoginProtocol.LOGIN_CREQ, dto);
+        this.WriteMessage(Protocol.TYPE_LOGIN, 0, LoginProtocol.LOGIN_CREQ, dto);
 
 
 
@@ -91,7 +90,7 @@ public class LoginScreen : MonoBehaviour
         dto.account = registerAccount.text;
         dto.password = regPwd.text;
 
-        this.Write(Protocol.TYPE_LOGIN, 0, LoginProtocol.REG_CREQ, dto);
+        this.WriteMessage(Protocol.TYPE_LOGIN, 0, LoginProtocol.REG_CREQ, dto);
 
         //WarmingManager.errors.Add(new WarningModel("×¢²áÊ§°Ü",null));
         OnCloseRegisterClick();
