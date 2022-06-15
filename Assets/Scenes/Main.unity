@@ -1024,6 +1024,7 @@ MonoBehaviour:
   createPanel: {fileID: 1440636636}
   nameInput: {fileID: 1320899083}
   expSlider: {fileID: 1452663897}
+  matchText: {fileID: 1188448683}
 --- !u!114 &1001393865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2179,7 +2180,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2078368522}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1001393864}
+        m_TargetAssemblyTypeName: MainScene, Assembly-CSharp
+        m_MethodName: match
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2078368522
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,11 +12,18 @@ public class MainScene : MonoBehaviour
     [SerializeField]
     private CreatePanel createPanel;
 
+    #region 玩家角色数据
     [SerializeField]
     private Text nameInput;
 
     [SerializeField]
     private Slider expSlider;
+    #endregion
+
+    [SerializeField]
+    private Text matchText; // 匹配按钮文字
+
+    private bool isMatching = false;
 
     private void Start()
     {
@@ -32,6 +39,8 @@ public class MainScene : MonoBehaviour
     {
         nameInput.text = GameData.user.name + "  等级:" + GameData.user.level;
         expSlider.value = GameData.user.exp / 100;
+
+        isMatching = false;
     }
 
 
@@ -49,5 +58,21 @@ public class MainScene : MonoBehaviour
     void closeMask()
     {
         mask.SetActive(false);
+    }
+
+
+    /// <summary>
+    /// 匹配方法
+    /// </summary>
+    public void match()
+    {
+        isMatching = !isMatching;
+
+        matchText.text = isMatching ? "取消排队" : "开始排队";
+        int command = isMatching ? MatchProtocol.ENTER_CREQ : MatchProtocol.LEAVE_CREQ;
+        this.WriteMessage(Protocol.TYPE_MATCH, 0, command, null);
+
+
+
     }
 }
