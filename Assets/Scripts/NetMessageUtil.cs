@@ -5,7 +5,7 @@ using GameProtocol;
 
 
 /// <summary>
-/// 消息转发
+/// 
 /// </summary>
 public class NetMessageUtil : MonoBehaviour,IHandler
 {
@@ -13,10 +13,13 @@ public class NetMessageUtil : MonoBehaviour,IHandler
     private IHandler loginHandler;
     private IHandler userHandler;
 
+    private IHandler selectHandler;
+
     void Start()
     {
         loginHandler = GetComponent<LoginHandler>();
         userHandler = GetComponent<UserHandler>();
+        selectHandler = GetComponent<SelectHandler>();
     }
 
     // Update is called once per frame
@@ -43,6 +46,10 @@ public class NetMessageUtil : MonoBehaviour,IHandler
 
             case Protocol.TYPE_USER:
                 userHandler.MessageReceive(model);
+                break;
+            
+            case Protocol.TYPE_SELECT:
+                selectHandler.MessageReceive(model);
                 break;
         }
     }

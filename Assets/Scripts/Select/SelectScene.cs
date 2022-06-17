@@ -112,6 +112,15 @@ public class SelectScene : MonoBehaviour
         }
     }
     
+    public void closeMask() {
+        initMask.SetActive(false);
+    }
+    
+    public void talkShow(string value) {
+        talkMsgShow.text += "\n" + value;
+        talkScroll.value = 0;
+    }
+    
     public void selected() {
         btnReady.interactable = false;
     }
@@ -123,5 +132,16 @@ public class SelectScene : MonoBehaviour
     public void readyClick() {
         this.WriteMessage(Protocol.TYPE_SELECT, 0, SelectProtocol.READY_CREQ, null);
     }
+
+
+    public void sendClick()
+    {
+        if (!string.IsNullOrEmpty(talkInput.text))
+        {
+            this.WriteMessage(Protocol.TYPE_SELECT,0,SelectProtocol.TALK_CREQ,talkInput.text);
+            talkInput.text = string.Empty;
+        }
+    }
+    
     
 }
